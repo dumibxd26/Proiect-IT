@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Pagina 3</title>
+    <link rel="stylesheet" type="text/css" href="main1.css">
+    <link rel="stylesheet" type="text/css" href="student.css">
+
+</head>
+
+<body class="h-100">
+
+  <section>
+
+    <img src="images/Asset 6 2.png" alt="background" class="img-fluid background-upper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-5 project_navbar">
+        <img src="images/image 1.svg" alt="Bazaroo" class="logo img-fluid">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav col-md-4 ml-auto d-flex align-items-center justify-content-around navigation-buttons">
+            <li class="nav-item btn btn-primary">
+              <a class="nav-link" href="#">Meditații</a>
+            </li>
+            <li class="nav-item btn btn-primary">
+              <a class="nav-link" href="#">Înrolări</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <section class="choose-courses">
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle dropdown-courses" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Toate
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+      </div>
+      
+      <div class="row courses" id="courses">
+
+      </div>
+    </section>
+  
+    <footer class="lower">
+        <img src="images/Asset 6 4.png" alt="background" class="background-lower img-responsive img-lower-media">
+        <div class="socialise">
+            <img src="images/Frame-3.png" alt="background" class="icons img-responsive icons-lower-media">
+            <img src="images/Frame-4.png" alt="background" class="icons img-responsive icons-lower-media">
+            <img src="images/Frame-5.png" alt="background" class="icons img-responsive icons-lower-media">
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/3a9f54b6ec.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+  let subjectUrl = 'https://proba2021.lsacbucuresti.ro/my/enrolments';
+  let bobobc_token = "7011816a-4b9d-42cc-aced-669662af65a4";
+  let token = window.localStorage.getItem("token");
+  let type = window.localStorage.getItem("type");
+
+  $(document).ready(event => {
+    if (type !== 'student') {
+      window.location.href = "main1.html";
+    }
+
+    fetch(subjectUrl, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token, 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'boboc-token': bobobc_token,
+        'token': token
+      }
+    }).then(response => {
+      console.log(response)
+
+      return response.json();
+    })
+    .then(res => {
+      res.forEach(element => {
+        let el = '<div class="course col-md-12"> ' +
+          '<div class="inside row">' +
+            '<h3 class="course-name col-md-3">' + element.subject.title + '</h3>' +
+            '<div class="teacher-course col-md-5">Prof. ' + element.teacher.firstname + ' ' + element.teacher.lastname + '</div>' +
+            '<p class="intro-course col-md-6">' + element.description + '</p>' +
+            '<div class="button-course col-md-6">' +
+              '<button aria-index="' + element.id + '" class="btn btn-primary the-button">Iesi de la curs</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+        $('#courses').append(el);
+      });
+
+
+      $('.the-button').click(event => {
+          let classIndex = $(event.target).attr('aria-index');
+          let enrollUrl = 'https://proba2021.lsacbucuresti.ro/my/enrolments/' + classIndex;
+         
+          fetch(enrollUrl, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': 'Bearer ' + token, 
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'boboc-token': bobobc_token,
+              'token': token
+            }
+          }).then(response => {
+            console.log(response);
+
+            window.location.reload();
+
+          }).catch(err => console.log(err))
+        })
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+    
+  });
+</script>
+
+</body>
+
+</html>

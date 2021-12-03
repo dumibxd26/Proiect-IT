@@ -1,0 +1,19 @@
+
+Cum ar trebui sa fie parcurs site-ul:
+
+• Intram in main1(ne conectam cu Live Server in VScode).
+• Ne inregistram cu un cont de student/profesor(cu extensia de email necesara pentru fiecare)
+• Ne logam
+• Observam ca s-a schimbat navbar-ul, intram in dashboard
+
+1. 
+• Daca suntem student, se afiseaza cursurile disponibile la care ne putem inscrie(observam si ca se schimba culoarea de inscriere butonului daca suntem inscrisi)
+• Daca intram la inrolari, putem vedea si cursurile la care ne-am inscris
+
+2. Daca suntem profesori, cream cursul pe care ni-l dorim.
+
+
+!!!! 
+• Probabil pot fi remarcate unele probleme de responsiveness, deoarece am folosit in principal doar HTML si CSS pentru aspect(am folosit foarte putin bootstrap, nu am mai lucrat cu el inainte). 
+• Unele lucruri nu mi-au iesit cand am incercat sa le rezolv si am ales sa le las cum s-a putut.
+• Am folosit media queries pentru viewport-urile pe care le-am considerat relevante
