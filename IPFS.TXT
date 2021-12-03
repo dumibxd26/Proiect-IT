@@ -1,0 +1,37 @@
+[
+  {
+    "path": "student.html",
+    "hash": "QmZa5FVtTzyWr6DJdMPbYgoTV4wRrC4d7T7LaPi8ZHJYem",
+    "size": 5820
+  },
+  {
+    "path": "student.css",
+    "hash": "QmYMMpNbGYK1hhj8VTmZDvmegP9ZKfXzUYdR56gYBEE3vi",
+    "size": 1720
+  },
+  {
+    "path": "main2.html",
+    "hash": "Qmd2K5DZcHyZemQZwyYYzuvhsYb6qG1CTPfJk9RbnMCkVZ",
+    "size": 4188
+  },
+  {
+    "path": "main1.html",
+    "hash": "QmSZsR8iwbacVL4iZkzrCkK8gnbuHAttva7e37STGQtxrc",
+    "size": 20903
+  },
+  {
+    "path": "main1.css",
+    "hash": "QmNSiDzT1VNHH7iLCHu9aGCz9qzApNQaYJZT59htwZj6fX",
+    "size": 13710
+  },
+  {
+    "path": "profesor.html",
+    "hash": "QmZQEnS5rpCa9zfDN5jrvykcZs2tFQDPVs1WB9mxovkMBM",
+    "size": 8007
+  },
+  {
+    "path": "inrolari.html",
+    "hash": "Qmcpnu3FfECbQDyUfkDdJepKSpMKU3WnyjUnQ99w9ocuWK",
+    "size": 5704
+  }
+]
