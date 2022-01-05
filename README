@@ -1,7 +1,7 @@
 
 Cum ar trebui sa fie parcurs site-ul:
 
-• Intram in main1(ne conectam cu Live Server in VScode).
+• Intram in main1(ne conectam cu Live Server in VScode)
 • Ne inregistram cu un cont de student/profesor(cu extensia de email necesara pentru fiecare)
 • Ne logam
 • Observam ca s-a schimbat navbar-ul, intram in dashboard
